@@ -2,3 +2,9 @@ section {
   font-family: sans-serif;
   border-bottom: 1px solid black;
 }
+
+.results {
+  font-family: sans-serif;
+  padding: 16px;
+  background-color: rgb(245, 242, 240);
+}

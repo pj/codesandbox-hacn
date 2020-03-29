@@ -53,13 +53,19 @@
         </div>
           <pre class="language-tsx">
             <code class="language-tsx">
-              import React from "react"; 
-              import { hacn, _continue, json } from "@hacn/hacn"; 
-              export const FetchExample = hacn(function*() { 
-                // Render the loading message without suspending. 
-                yield _continue(&lt;div>Loading...&lt;/div>); 
+              import React from "react";
+              import { hacn, _continue, json, timeout, all } from "@hacn/hacn";
+
+              export const FetchExample = hacn(function*() {
+                // Render the loading message without suspending.
+                yield _continue(&lt;div>Loading...&lt;/div>);
                 // Load the data from the url and suspend waiting for the result.
-                const result = yield json`https://jsonplaceholder.typicode.com/todos/1`;
+                const result = yield _continue(json`https://jsonplaceholder.typicode.com/todos/1`);
+
+                // Display loading for awhile.
+                const te = yield _continue(timeout(1000));
+
+                const [data, _] = yield all(result, te);
                 // render result suspending. 
                 yield (
                   &lt;div>
@@ -69,23 +75,76 @@
                   &lt;/div>
                 ); 
               });
-          </code></pre>
-        <div id="fetch_example"></div>
+          </code>
+        </pre>
+        <h4>Result</h4>
+        <div class="results" id="fetch_example"></div>
       </section>
-      <div id="capture_example"></div>
-      <div id="fetch_timeout_example"></div>
-      <div id="error_example"></div>
-      <div id="workflow_example"></div>
+      <section>
+        <h3>Capturing clicks</h3>
+        <div>
+          This example shows how clicks can be captured from events on rendered 
+          elements.
+        </div>
+        <pre class="language-tsx">
+          <code class="language-tsx">
+            import React from "react";
+            import { hacn, _continue, capture } from "@hacn/hacn";
+
+            export const CaptureExample = hacn(function*() {
+              const changeCapture = yield capture();
+              let text = "";
+              
+              function valueCapture(event: any) {
+                changeCapture(event.target.value);
+              }
+
+              while (true) {
+                text = yield (
+                  &lt;React.Fragment>
+                    &lt;input id="foo" onChange={valueCapture} value={text}/>
+                    &lt;div>{text}&lt;/div>
+                  &lt;/React.Fragment>
+                );
+              }
+            });
+          </code>
+        </pre>
+        <h4>Result</h4>
+        <div class="results" id="capture_example"></div>
+      </section>
+      <section>
+        <h3>Handling errors</h3>
+        <div>
+          This example shows how Hacn can handle errors within components.
+        </div>
+        <pre class="language-tsx">
+          <code class="language-tsx">
+            import React from "react";
+            import { hacn, capture } from "@hacn/hacn";
+
+            const ErroringComponent = hacn(function* () {
+              const clickCapture = yield capture();
+              yield (&lt;button onClick={clickCapture}>Cause Error&lt;/button>)
+              throw new Error("An error occured");
+            });
+
+            export const ErrorExample = hacn(function*() {
+              try {
+                yield &lt;ErroringComponent />;
+              } catch (e) {
+                yield (
+                  &lt;div id="error" style={{ color: "red" }}>
+                    {e.message}
+                  &lt;/div>
+                );
+              }
+            });
+          </code>
+        </pre>
+        <h4>Result</h4>
+        <div class="results" id="error_example"></div>
+      </section>
     </main>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>
