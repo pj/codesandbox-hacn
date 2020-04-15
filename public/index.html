@@ -54,7 +54,7 @@
           <pre class="language-tsx">
             <code class="language-tsx">
               import React from "react";
-              import { hacn, _continue, json, timeout, all } from "@hacn/hacn";
+              import { hacn, _continue, json, timeout } from "@hacn/hacn";
 
               export const FetchExample = hacn(function*() {
                 // Render the loading message without suspending.
@@ -65,7 +65,7 @@
                 // Display loading for awhile.
                 const te = yield _continue(timeout(1000));
 
-                const [data, _] = yield all(result, te);
+                const [data, _] = yield suspend(result, te);
                 // render result suspending. 
                 yield (
                   &lt;div>
@@ -89,14 +89,13 @@
         <pre class="language-tsx">
           <code class="language-tsx">
             import React from "react";
-            import { hacn, _continue, capture } from "@hacn/hacn";
+            import { hacn, _continue } from "@hacn/hacn";
 
-            export const CaptureExample = hacn(function*() {
-              const changeCapture = yield capture();
+            export const CaptureExample = hacn(function*(props, capture) {
               let text = "";
               
               function valueCapture(event: any) {
-                changeCapture(event.target.value);
+                capture(event.target.value);
               }
 
               while (true) {
@@ -121,11 +120,10 @@
         <pre class="language-tsx">
           <code class="language-tsx">
             import React from "react";
-            import { hacn, capture } from "@hacn/hacn";
+            import { hacn } from "@hacn/hacn";
 
-            const ErroringComponent = hacn(function* () {
-              const clickCapture = yield capture();
-              yield (&lt;button onClick={clickCapture}>Cause Error&lt;/button>)
+            const ErroringComponent = hacn(function* (props, capture) {
+              yield (&lt;button onClick={capture}>Cause Error&lt;/button>)
               throw new Error("An error occured");
             });
 
