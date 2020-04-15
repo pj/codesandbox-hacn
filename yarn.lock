@@ -970,17 +970,15 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
 
-"@hacn/hacn@0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@hacn/hacn/-/hacn-0.0.5.tgz#84dfa2b3c6b7ebf25fcf656415a2bb6dfe68806b"
-  integrity sha512-76aojIj7O4K5PRE/wqZZ4sAK8XE5sDSZquoBjYuxXqGE7FUUYedJHfO88YOI09y4k9zdnxgNRty+/hqAgQwRIQ==
+"@hacn/hacn@0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@hacn/hacn/-/hacn-0.0.7.tgz#4e1c7986bd96a137126ee7cff9ea690ceb02db38"
+  integrity sha512-XO7NLX17Pf9aObABRgtM5P5KhxdO5e2cl9iR2tiYMUm6t/0NoWuMalE9do3GdnQLgxpanLGb7SV1K6lpFpS4KQ==
   dependencies:
     "@types/react-dom" "^16.9.5"
-    "@types/uuid" "^7.0.0"
     react "16"
     react-dom "16"
     shallow-equal "^1.2.1"
-    uuid "^7.0.2"
 
 "@hapi/address@2.x.x":
   version "2.1.4"
@@ -1412,11 +1410,6 @@
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-1.0.1.tgz#0a851d3bd96498fa25c33ab7278ed3bd65f06c3e"
   integrity sha512-l42BggppR6zLmpfU6fq9HEa2oGPEI8yrSPL3GITjfRInppYFahObbIQOQK3UGxEnyQpltZLaPe75046NOZQikw==
-
-"@types/uuid@^7.0.0":
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-7.0.2.tgz#d680a9c596ef84abf5c4c07a32ffd66d582526f8"
-  integrity sha512-8Ly3zIPTnT0/8RCU6Kg/G3uTICf9sRwYOpUzSIM3503tLIKcnJPRuinHhXngJUy2MntrEf6dlpOHXJju90Qh5w==
 
 "@types/yargs-parser@*":
   version "15.0.0"
@@ -10056,11 +10049,6 @@ uuid@^3.0.1, uuid@^3.3.2:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
-
-uuid@^7.0.2:
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.2.tgz#7ff5c203467e91f5e0d85cfcbaaf7d2ebbca9be6"
-  integrity sha512-vy9V/+pKG+5ZTYKf+VcphF5Oc6EFiu3W8Nv3P3zIh0EqVI80ZxOzuPfe9EHjkFNvf8+xuTHVeei4Drydlx4zjw==
 
 v8-compile-cache@^2.0.3:
   version "2.1.0"

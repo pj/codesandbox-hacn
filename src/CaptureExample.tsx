@@ -1,12 +1,11 @@
 import React from "react";
-import { hacn, _continue, capture } from "@hacn/hacn";
+import { hacn, _continue } from "@hacn/hacn";
 
-export const CaptureExample = hacn(function*() {
-  const changeCapture = yield capture();
+export const CaptureExample = hacn(function*(props, capture) {
   let text = "";
   
   function valueCapture(event: any) {
-    changeCapture(event.target.value);
+    capture(event.target.value);
   }
   
 

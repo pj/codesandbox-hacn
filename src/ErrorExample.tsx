@@ -1,9 +1,8 @@
 import React from "react";
-import { hacn, capture } from "@hacn/hacn";
+import { hacn } from "@hacn/hacn";
 
-const ErroringComponent = hacn(function* () {
-  const clickCapture = yield capture();
-  yield (<button onClick={clickCapture}>Cause Error</button>)
+const ErroringComponent = hacn(function* (props, capture) {
+  yield (<button onClick={capture}>Cause Error</button>)
   throw new Error("An error occured");
 });
 

@@ -1,5 +1,11 @@
 import React from "react";
-import { hacn, _continue, json, timeout, all } from "@hacn/hacn";
+import { 
+  hacn, 
+  _continue, 
+  json, 
+  timeout, 
+  suspend 
+} from "@hacn/hacn";
 
 export const FetchExample = hacn(function*() {
   // Render the loading message without suspending.
@@ -10,7 +16,7 @@ export const FetchExample = hacn(function*() {
   // Display loading for awhile.
   const te = yield _continue(timeout(1000));
 
-  const [data, _] = yield all(result, te);
+  const [data, _] = yield suspend(result, te);
   // render result suspending.
   yield (
     <div>
