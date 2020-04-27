@@ -52,9 +52,10 @@
           <pre class="language-tsx">
             <code class="language-tsx">
               import React from "react";
-              import { hacn, _continue, json, timeout } from "@hacn/hacn";
+              import { loadHacn, _continue, json, timeout } from "@hacn/hacn";
+              loadHacn();
 
-              export const FetchExample = hacn(function*() {
+              export const FetchExample = function*() {
                 // Render the loading message without suspending.
                 yield _continue(&lt;div>Loading...&lt;/div>);
                 // Load the data from the url and suspend waiting for the result.
@@ -72,7 +73,7 @@
                     &lt;div>{result.completed}&lt;/div>
                   &lt;/div>
                 ); 
-              });
+              };
           </code>
         </pre>
         <h4>Result</h4>
@@ -87,9 +88,10 @@
         <pre class="language-tsx">
           <code class="language-tsx">
             import React from "react";
-            import { hacn, _continue } from "@hacn/hacn";
+            import { loadHacn, _continue } from "@hacn/hacn";
+            loadHacn();
 
-            export const CaptureExample = hacn(function*(props, capture) {
+            export const CaptureExample = function*(props, capture) {
               let text = "";
               
               function valueCapture(event: any) {
@@ -104,7 +106,7 @@
                   &lt;/React.Fragment>
                 );
               }
-            });
+            };
           </code>
         </pre>
         <h4>Result</h4>
@@ -118,14 +120,15 @@
         <pre class="language-tsx">
           <code class="language-tsx">
             import React from "react";
-            import { hacn } from "@hacn/hacn";
+            import { loadHacn } from "@hacn/hacn";
+            loadHacn();
 
-            const ErroringComponent = hacn(function* (props, capture) {
+            const ErroringComponent = function* (props, capture) {
               yield (&lt;button onClick={capture}>Cause Error&lt;/button>)
               throw new Error("An error occured");
-            });
+            };
 
-            export const ErrorExample = hacn(function*() {
+            export const ErrorExample = function*() {
               try {
                 yield &lt;ErroringComponent />;
               } catch (e) {
@@ -135,7 +138,7 @@
                   &lt;/div>
                 );
               }
-            });
+            };
           </code>
         </pre>
         <h4>Result</h4>

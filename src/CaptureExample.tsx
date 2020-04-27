@@ -8,7 +8,6 @@ export const CaptureExample = function*(props: any, capture: any) {
     capture(event.target.value);
   }
   
-
   while (true) {
     text = yield (
       <React.Fragment>
