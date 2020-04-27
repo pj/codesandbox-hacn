@@ -1,7 +1,7 @@
 import React from "react";
-import { hacn, _continue } from "@hacn/hacn";
+import { _continue } from "@hacn/hacn";
 
-export const CaptureExample = hacn(function*(props, capture) {
+export const CaptureExample = function*(props: any, capture: any) {
   let text = "";
   
   function valueCapture(event: any) {
@@ -17,4 +17,4 @@ export const CaptureExample = hacn(function*(props, capture) {
       </React.Fragment>
     );
   }
-});
+};

@@ -1,13 +1,13 @@
 import React from "react";
-import { hacn } from "@hacn/hacn";
 
-const ErroringComponent = hacn(function* (props, capture) {
+const ErroringComponent = function* (props: any, capture: any) {
   yield (<button onClick={capture}>Cause Error</button>)
   throw new Error("An error occured");
-});
+};
 
-export const ErrorExample = hacn(function*() {
+export const ErrorExample = function*() {
   try {
+    // @ts-ignore
     yield <ErroringComponent />;
   } catch (e) {
     yield (
@@ -16,4 +16,4 @@ export const ErrorExample = hacn(function*() {
       </div>
     );
   }
-});
+};

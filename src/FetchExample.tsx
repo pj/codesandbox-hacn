@@ -1,13 +1,12 @@
 import React from "react";
 import { 
-  hacn, 
   _continue, 
   json, 
   timeout, 
   suspend 
 } from "@hacn/hacn";
 
-export const FetchExample = hacn(function*() {
+export const FetchExample = function* (): any {
   // Render the loading message without suspending.
   yield _continue(<div>Loading...</div>);
   // Load the data from the url and suspend waiting for the result.
@@ -25,4 +24,4 @@ export const FetchExample = hacn(function*() {
       <div><strong>completed:</strong> {data.completed}</div>
     </div>
   );
-});
+};

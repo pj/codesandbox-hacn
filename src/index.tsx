@@ -4,6 +4,8 @@ import { FetchExample } from "./FetchExample";
 import './styles.css'; 
 import { CaptureExample } from "./CaptureExample";
 import { ErrorExample } from "./ErrorExample";
+import { loadHacn } from "@hacn/hacn";
+loadHacn();
 
 function RerenderWrapper(props: {RerenderComponent: React.FunctionComponent<any>}) {
   const RerenderComponent = props.RerenderComponent;
@@ -26,12 +28,14 @@ render(
 
 const captureElement = document.getElementById("capture_example");
 render(
+    // @ts-ignore
     <CaptureExample />,
     captureElement
 );
 
 const errorElement = document.getElementById("error_example");
 render(
+    // @ts-ignore
     <RerenderWrapper RerenderComponent={ErrorExample} />,
     errorElement
 );
